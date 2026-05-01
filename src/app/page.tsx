@@ -6,6 +6,8 @@ import { ArticleList } from "@/components/article/ArticleList";
 import { Container } from "@/components/ui/Container";
 import { fetchPublishedArticles } from "@/lib/queries/articles";
 
+export const revalidate = 60;
+
 export default async function HomePage() {
   const allArticles = await fetchPublishedArticles();
   const featuredArticle = allArticles[0] ?? null;

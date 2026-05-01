@@ -7,6 +7,8 @@ import { Container } from "@/components/ui/Container";
 import { fetchPublishedArticlesByCategoryAndSearch } from "@/lib/queries/articles";
 import { fetchCategoryBySlug } from "@/lib/queries/categories";
 
+export const revalidate = 60;
+
 type CategoryPageProps = {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ q?: string }>;

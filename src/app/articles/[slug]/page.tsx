@@ -14,6 +14,8 @@ import { fetchAdjacentArticlesBySlug, fetchArticleBySlug, fetchRelatedArticles }
 import { urlForImage } from "@/lib/sanity/image";
 import { sitePublicUrl } from "@/lib/site-config";
 
+export const revalidate = 60;
+
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
 };

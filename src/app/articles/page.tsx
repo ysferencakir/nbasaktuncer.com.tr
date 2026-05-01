@@ -8,6 +8,8 @@ import { Container } from "@/components/ui/Container";
 import { fetchPublishedArticlesBySearch } from "@/lib/queries/articles";
 import { fetchCategoriesWithCounts } from "@/lib/queries/categories";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Makaleler",
   description: "Yayınlanan tüm makaleler ve kategoriler.",

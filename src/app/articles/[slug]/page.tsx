@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ArticleBody } from "@/components/article/ArticleBody";
+import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
 import { RelatedArticles } from "@/components/article/RelatedArticles";
 import { TableOfContents } from "@/components/article/TableOfContents";
 import { Container } from "@/components/ui/Container";
@@ -52,6 +53,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   return (
     <Container className="space-y-8">
+      <ReadingProgressBar />
       <article className="space-y-6">
         <header className="space-y-3 border-b border-[#e8dccf] pb-5">
           <p className="text-sm font-medium text-ink-subtle">

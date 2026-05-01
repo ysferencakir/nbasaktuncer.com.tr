@@ -7,10 +7,12 @@ import { ArticlePrevNextNav } from "@/components/article/ArticlePrevNextNav";
 import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
 import { RelatedArticles } from "@/components/article/RelatedArticles";
 import { TableOfContents } from "@/components/article/TableOfContents";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { estimateReadingMinutes, extractTocItems } from "@/lib/content-utils";
 import { fetchAdjacentArticlesBySlug, fetchArticleBySlug, fetchRelatedArticles } from "@/lib/queries/articles";
 import { urlForImage } from "@/lib/sanity/image";
+import { sitePublicUrl } from "@/lib/site-config";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -50,10 +52,37 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const coverUrl = article.coverImage ? urlForImage(article.coverImage).width(1400).height(788).fit("crop").url() : null;
   const readingMinutes = estimateReadingMinutes(`${article.title} ${article.excerpt}`);
   const tocItems = extractTocItems(article.body as Array<{ _type: string; [key: string]: unknown }> | null | undefined);
+  const articleUrl = `${sitePublicUrl}/articles/${article.slug}`;
+
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.seoDescription ?? article.excerpt,
+    datePublished: article.publishedAt,
+    author: {
+      "@type": "Person",
+      name: article.author?.name ?? "Naciye Başak Tuncer",
+    },
+    mainEntityOfPage: articleUrl,
+    image: coverUrl ?? undefined,
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: sitePublicUrl },
+      { "@type": "ListItem", position: 2, name: "Makaleler", item: `${sitePublicUrl}/articles` },
+      { "@type": "ListItem", position: 3, name: article.title, item: articleUrl },
+    ],
+  };
 
   return (
     <Container className="space-y-8">
       <ReadingProgressBar />
+      <JsonLd data={articleJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <article className="space-y-6">
         <header className="space-y-3 border-b border-[#e8dccf] pb-5">
           <p className="text-sm font-medium text-ink-subtle">

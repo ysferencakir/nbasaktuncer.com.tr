@@ -19,17 +19,17 @@ export default async function HomePage() {
       ) : (
         <section className="rounded-2xl border border-[#e7d8c6] bg-surface-card p-8">
           <p className="text-sm font-medium text-accent">Sanity-First Kurulum</p>
-          <h1 className="mt-2 text-4xl font-bold tracking-tight text-ink">Icerigi once CMS uzerinde uret, sitede aninda yayinla.</h1>
+          <h1 className="mt-2 text-4xl font-bold tracking-tight text-ink">İçeriği önce CMS üzerinde üret, sitede anında yayınla.</h1>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-ink-muted">
-            Teknik bilgisi olmayan kullanicilarin rahatca makale girebilmesi icin sade bir editor deneyimi ve moduler frontend
-            altyapisi.
+            Teknik bilgisi olmayan kullanıcıların rahatça makale girebilmesi için sade bir editör deneyimi ve modüler frontend
+            altyapısı.
           </p>
           <div className="mt-6 flex items-center gap-3">
             <Link href="/articles" className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover">
-              Tum makaleler
+              Tüm makaleler
             </Link>
             <Link href="/about" className="rounded-md border border-[#d8c1a8] px-4 py-2 text-sm font-medium text-ink hover:text-accent">
-              Hakkinda
+              Hakkında
             </Link>
           </div>
         </section>
@@ -39,7 +39,7 @@ export default async function HomePage() {
 
       <ArticleList
         title="Son Makaleler"
-        description="Yayin durumuna gore filtrelenmis son icerikler listelenir."
+        description="Yayın durumuna göre filtrelenmiş son içerikler listelenir."
         articles={latestArticles}
       />
     </Container>

@@ -1,0 +1,204 @@
+[
+  {
+    "_id": "author-naciye-basak-tuncer",
+    "_type": "author",
+    "name": "Naciye Basak Tuncer",
+    "bio": "Yazarlik, dusunce ve gundelik hayatin kesistigi noktalarda icerik uretir."
+  },
+  {
+    "_id": "category-deneme",
+    "_type": "category",
+    "title": "Deneme",
+    "slug": {
+      "_type": "slug",
+      "current": "deneme"
+    }
+  },
+  {
+    "_id": "category-yazarlik-notlari",
+    "_type": "category",
+    "title": "Yazarlik Notlari",
+    "slug": {
+      "_type": "slug",
+      "current": "yazarlik-notlari"
+    }
+  },
+  {
+    "_id": "article-dummy-yazma-ritmi",
+    "_type": "article",
+    "title": "Yazma Ritmi Nasil Kurulur?",
+    "slug": {
+      "_type": "slug",
+      "current": "yazma-ritmi-nasil-kurulur"
+    },
+    "excerpt": "Duzenli yazma aliskanligi kazanmak icin uygulanabilir bir haftalik ritim modeli.",
+    "publishedAt": "2026-05-01T09:00:00.000Z",
+    "status": "published",
+    "author": {
+      "_type": "reference",
+      "_ref": "author-naciye-basak-tuncer"
+    },
+    "categories": [
+      {
+        "_type": "reference",
+        "_ref": "category-yazarlik-notlari"
+      }
+    ],
+    "seoTitle": "Yazma Ritmi Nasil Kurulur",
+    "seoDescription": "Duzenli yazma aliskanligi icin kisa ve uygulanabilir adimlar.",
+    "body": [
+      {
+        "_key": "ritim-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "ritim-h2-span",
+            "_type": "span",
+            "text": "Yazma Ritmi Kurarken Ilk Adim",
+            "marks": []
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "ritim-p1",
+        "_type": "block",
+        "style": "normal",
+        "children": [
+          {
+            "_key": "ritim-p1-span",
+            "_type": "span",
+            "text": "Her gun ayni saatte 20-30 dakikalik mini yazma seansi ayirmak, uzun vadede istikrar saglar.",
+            "marks": []
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "ritim-tip",
+        "_type": "tipBox",
+        "title": "Ipucu",
+        "text": "Metrik olarak sadece sureyi takip et; kelime hedefi baskisi baslangicta motivasyonu dusurebilir."
+      }
+    ]
+  },
+  {
+    "_id": "article-dummy-bos-sayfa",
+    "_type": "article",
+    "title": "Bos Sayfa Korkusunu Asmak",
+    "slug": {
+      "_type": "slug",
+      "current": "bos-sayfa-korkusunu-asmak"
+    },
+    "excerpt": "Yazmaya baslamayi geciktiren zihinsel bariyerleri kucuk tekniklerle asma rehberi.",
+    "publishedAt": "2026-05-02T09:00:00.000Z",
+    "status": "published",
+    "author": {
+      "_type": "reference",
+      "_ref": "author-naciye-basak-tuncer"
+    },
+    "categories": [
+      {
+        "_type": "reference",
+        "_ref": "category-deneme"
+      },
+      {
+        "_type": "reference",
+        "_ref": "category-yazarlik-notlari"
+      }
+    ],
+    "seoTitle": "Bos Sayfa Korkusunu Asmak",
+    "seoDescription": "Yazmaya baslamayi kolaylastiran pratik yaklasimlar.",
+    "body": [
+      {
+        "_key": "bos-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "bos-h2-span",
+            "_type": "span",
+            "text": "Ilk Cumleyi Mukkemmel Yazmak Zorunda Degilsin",
+            "marks": []
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "bos-p1",
+        "_type": "block",
+        "style": "normal",
+        "children": [
+          {
+            "_key": "bos-p1-span",
+            "_type": "span",
+            "text": "Ilk taslakta kalite yerine akis hedeflenirse zihinsel direnc hizla azalir ve metin daha kolay buyur.",
+            "marks": []
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "bos-quote",
+        "_type": "quoteCard",
+        "quote": "Yazmak, duzgun dusunmenin en gorunur halidir.",
+        "source": "Naciye Basak Tuncer"
+      }
+    ]
+  },
+  {
+    "_id": "article-dummy-metin-duzenleme",
+    "_type": "article",
+    "title": "Metni Sonradan Duzenlemenin Guclu Yontemi",
+    "slug": {
+      "_type": "slug",
+      "current": "metni-sonradan-duzenleme-yontemi"
+    },
+    "excerpt": "Ilk taslaktan yayinlanabilir metne giden duzenleme adimlari.",
+    "publishedAt": "2026-05-03T09:00:00.000Z",
+    "status": "published",
+    "author": {
+      "_type": "reference",
+      "_ref": "author-naciye-basak-tuncer"
+    },
+    "categories": [
+      {
+        "_type": "reference",
+        "_ref": "category-yazarlik-notlari"
+      }
+    ],
+    "seoTitle": "Metni Sonradan Duzenleme Yontemi",
+    "seoDescription": "Ilk taslaktan son metne giderken net bir duzenleme cizelgesi.",
+    "body": [
+      {
+        "_key": "duzen-h2",
+        "_type": "block",
+        "style": "h2",
+        "children": [
+          {
+            "_key": "duzen-h2-span",
+            "_type": "span",
+            "text": "Uc Asamali Duzenleme Yaklasimi",
+            "marks": []
+          }
+        ],
+        "markDefs": []
+      },
+      {
+        "_key": "duzen-p1",
+        "_type": "block",
+        "style": "normal",
+        "children": [
+          {
+            "_key": "duzen-p1-span",
+            "_type": "span",
+            "text": "Ilk turde anlami, ikinci turde yapisal akisi, ucuncu turde dil ve ritmi duzenlemek daha net sonuc verir.",
+            "marks": []
+          }
+        ],
+        "markDefs": []
+      }
+    ]
+  }
+]

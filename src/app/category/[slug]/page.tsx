@@ -48,14 +48,14 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
         title={search ? `${category.title} kategorisinde arama` : `${category.title} kategorisi`}
         description={
           search
-            ? "Arama sonucunda bu kategoride eslesen yayinlanmis icerikler listeleniyor."
-            : "Bu kategoriye ait yayinlanmis icerikler listeleniyor."
+            ? "Arama sonucunda bu kategoride eşleşen yayınlanmış içerikler listeleniyor."
+            : "Bu kategoriye ait yayınlanmış içerikler listeleniyor."
         }
         articles={articles}
         emptyMessage={
           search
-            ? `Bu kategoride aramanizla eslesen icerik bulunamadi.`
-            : "Bu kategori icin yayinlanmis makale bulunmuyor."
+            ? "Bu kategoride aramanızla eşleşen içerik bulunamadı."
+            : "Bu kategori için yayınlanmış makale bulunmuyor."
         }
       />
     </Container>

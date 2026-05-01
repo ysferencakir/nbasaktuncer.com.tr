@@ -10,7 +10,7 @@ import { fetchCategoriesWithCounts } from "@/lib/queries/categories";
 
 export const metadata: Metadata = {
   title: "Makaleler",
-  description: "Yayinlanan tum makaleler ve kategoriler.",
+  description: "Yayınlanan tüm makaleler ve kategoriler.",
 };
 
 type ArticlesPageProps = {
@@ -32,17 +32,17 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
       <ArticleSearchBar defaultValue={search} />
       <CategoryFilterBar categories={categories.filter((category) => category.articleCount > 0)} />
       <ArticleList
-        title={search ? `Arama Sonuclari: "${search}"` : "Tum Makaleler"}
+        title={search ? `Arama Sonuçları: "${search}"` : "Tüm Makaleler"}
         description={
           search
-            ? "Arama sonucunda eslesen yayinlanmis makaleler listelenir."
-            : "Yayinlanmis tum icerikler bu sayfada listelenir."
+            ? "Arama sonucunda eşleşen yayınlanmış makaleler listelenir."
+            : "Yayınlanmış tüm içerikler bu sayfada listelenir."
         }
         articles={listItems}
         emptyMessage={
           search
-            ? `Aramanizla eslesen icerik bulunamadi. Farkli bir anahtar kelime ile tekrar deneyin.`
-            : "Henuz yayinlanmis makale bulunmuyor."
+            ? "Aramanızla eşleşen içerik bulunamadı. Farklı bir anahtar kelime ile tekrar deneyin."
+            : "Henüz yayınlanmış makale bulunmuyor."
         }
       />
     </Container>

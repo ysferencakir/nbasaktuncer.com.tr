@@ -12,7 +12,7 @@ export function RelatedArticles({ articles }: RelatedArticlesProps) {
 
   return (
     <section className="space-y-4 rounded-2xl border border-[#e7d8c6] bg-surface-card p-6">
-      <h2 className="text-xl font-semibold tracking-tight text-ink">Ilgili Yazilar</h2>
+      <h2 className="text-xl font-semibold tracking-tight text-ink">İlgili Yazılar</h2>
       <div className="grid gap-3 md:grid-cols-3">
         {articles.map((article) => (
           <Link

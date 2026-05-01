@@ -62,7 +62,7 @@ const components: PortableTextComponents = {
       );
     },
     tipBox: ({ value }) => {
-      const title = (value as { title?: string })?.title ?? "Ipucu";
+      const title = (value as { title?: string })?.title ?? "İpucu";
       const text = (value as { text?: string })?.text ?? "";
 
       return (

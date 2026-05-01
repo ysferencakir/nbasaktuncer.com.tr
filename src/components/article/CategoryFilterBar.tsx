@@ -22,7 +22,7 @@ export function CategoryFilterBar({ categories }: CategoryFilterBarProps) {
           href="/articles"
           className="rounded-full border border-[#d8c1a8] bg-surface-card px-3 py-1.5 text-sm font-medium text-ink hover:text-accent"
         >
-          Tum Yazilar
+          Tüm Yazılar
         </Link>
         {categories.map((category) => (
           <Link

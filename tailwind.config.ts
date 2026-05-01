@@ -14,19 +14,19 @@ const config: Config = {
       },
       colors: {
         surface: {
-          DEFAULT: "#fcfaf7",
-          muted: "#f5efe7",
-          card: "#fffdf9",
+          DEFAULT: "#fcfcfb",
+          muted: "#f7f4f0",
+          card: "#ffffff",
         },
         ink: {
-          DEFAULT: "#2a2118",
-          muted: "#5c4f42",
-          subtle: "#9a8a7a",
+          DEFAULT: "#241f1a",
+          muted: "#4f463d",
+          subtle: "#8d8072",
         },
         accent: {
-          DEFAULT: "#9f5f2f",
-          hover: "#844a21",
-          soft: "#ebd5be",
+          DEFAULT: "#8a4f28",
+          hover: "#744220",
+          soft: "#f1e2d2",
         },
       },
       maxWidth: {

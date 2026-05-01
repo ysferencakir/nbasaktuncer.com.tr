@@ -21,8 +21,8 @@ export default async function AboutPage() {
       <section className="space-y-3 text-center">
         <h1 className="text-3xl font-bold tracking-tight">Hakkında</h1>
         <p className="mx-auto max-w-measure text-sm leading-7 text-ink-muted">
-          Bu platform, Sanity Studio uzerinden kolay icerik uretimi icin tasarlandi. Ilk hedef; makale olusturma, listeleme ve
-          detay sayfasi akisini sade ama guclu bir yapi ile sunmak.
+          Bu platform, Sanity Studio üzerinden kolay içerik üretimi için tasarlandı. İlk hedef; makale oluşturma, listeleme ve
+          detay sayfası akışını sade ama güçlü bir yapı ile sunmak.
         </p>
       </section>
 
@@ -46,7 +46,7 @@ export default async function AboutPage() {
             <p className="text-2xl font-semibold tracking-tight">{primaryAuthor.name}</p>
             <p className="mx-auto max-w-measure text-sm leading-7 text-ink-muted">
               {primaryAuthor.bio ??
-                "Bu alanda yazarin kisa biyografisi yer alir. Su anda tek yazarlik yapisi ile sade bir icerik deneyimi sunulur."}
+                "Bu alanda yazarın kısa biyografisi yer alır. Şu anda tek yazarlık yapısı ile sade bir içerik deneyimi sunulur."}
             </p>
           </div>
         ) : (
@@ -55,7 +55,7 @@ export default async function AboutPage() {
               {defaultAuthorName.charAt(0)}
             </div>
             <p className="text-2xl font-semibold tracking-tight">{defaultAuthorName}</p>
-            <p className="text-sm text-ink-muted">Sanity uzerinden yazar profili eklendiginde burada otomatik gosterilecektir.</p>
+            <p className="text-sm text-ink-muted">Sanity üzerinden yazar profili eklendiğinde burada otomatik gösterilecektir.</p>
           </div>
         )}
       </section>

@@ -9,7 +9,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
 
   return (
     <aside className="rounded-2xl border border-[#e7d8c6] bg-surface-card p-4">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-subtle">Icindekiler</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-subtle">İçindekiler</p>
       <nav className="mt-3">
         <ul className="space-y-2">
           {items.map((item) => (

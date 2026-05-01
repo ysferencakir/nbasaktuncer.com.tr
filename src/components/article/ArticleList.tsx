@@ -8,7 +8,7 @@ type ArticleListProps = {
   emptyMessage?: string;
 };
 
-export function ArticleList({ title, description, articles, emptyMessage = "Henuz yayinlanmis makale bulunmuyor." }: ArticleListProps) {
+export function ArticleList({ title, description, articles, emptyMessage = "Henüz yayınlanmış makale bulunmuyor." }: ArticleListProps) {
   return (
     <section className="space-y-6">
       <div className="space-y-2 border-b border-[#e8dccf] pb-4">

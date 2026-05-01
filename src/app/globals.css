@@ -8,8 +8,6 @@
 
 body {
   @apply bg-surface text-ink antialiased;
-  background-image: radial-gradient(circle at top right, #f2e2d1 0, rgba(242, 226, 209, 0) 45%);
-  background-attachment: fixed;
 }
 
 a {

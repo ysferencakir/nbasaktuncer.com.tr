@@ -73,20 +73,20 @@ const portableTextBlocks = defineField({
     defineArrayMember({
       name: "tipBox",
       type: "object",
-      title: "Ipucu kutusu",
+      title: "İpucu kutusu",
       fields: [
         defineField({
           name: "title",
           type: "string",
-          title: "Baslik",
-          initialValue: "Ipucu",
+          title: "Başlık",
+          initialValue: "İpucu",
           validation: (Rule) => Rule.required().min(2).max(80),
         }),
         defineField({
           name: "text",
           type: "text",
           rows: 3,
-          title: "Icerik",
+          title: "İçerik",
           validation: (Rule) => Rule.required().min(10).max(500),
         }),
       ],
@@ -94,13 +94,13 @@ const portableTextBlocks = defineField({
     defineArrayMember({
       name: "quoteCard",
       type: "object",
-      title: "Alinti karti",
+      title: "Alıntı kartı",
       fields: [
         defineField({
           name: "quote",
           type: "text",
           rows: 3,
-          title: "Alinti",
+          title: "Alıntı",
           validation: (Rule) => Rule.required().min(10).max(500),
         }),
         defineField({

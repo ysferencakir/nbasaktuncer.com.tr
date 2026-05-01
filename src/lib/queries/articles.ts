@@ -50,12 +50,33 @@ export const articleBySlugQuery = `
   }
 `;
 
+export const publishedArticlesBySearchQuery = `
+  *[
+    ${publishedFilter} &&
+    (
+      title match $searchPattern ||
+      excerpt match $searchPattern
+    )
+  ] | order(publishedAt desc) {
+    ${articleListProjection}
+  }
+`;
+
 export async function fetchPublishedArticles(): Promise<ArticleListItem[]> {
   return getSanityClient().fetch<ArticleListItem[]>(publishedArticlesQuery);
 }
 
 export async function fetchPublishedArticlesByCategory(slug: string): Promise<ArticleListItem[]> {
   return getSanityClient().fetch<ArticleListItem[]>(publishedArticlesByCategoryQuery, { slug });
+}
+
+export async function fetchPublishedArticlesBySearch(search: string): Promise<ArticleListItem[]> {
+  const normalized = search.trim();
+  if (!normalized) return fetchPublishedArticles();
+
+  return getSanityClient().fetch<ArticleListItem[]>(publishedArticlesBySearchQuery, {
+    searchPattern: `*${normalized}*`,
+  });
 }
 
 export async function fetchArticleBySlug(slug: string): Promise<ArticleDetail | null> {

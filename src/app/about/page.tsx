@@ -1,10 +1,11 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { fetchAuthors } from "@/lib/queries/authors";
 import { urlForImage } from "@/lib/sanity/image";
-import { defaultAuthorName } from "@/lib/site-config";
+import { defaultAuthorName, sitePublicUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Hakkında",
@@ -15,9 +16,20 @@ export default async function AboutPage() {
   const authors = await fetchAuthors();
   const primaryAuthor = authors[0] ?? null;
   const avatarUrl = primaryAuthor?.image ? urlForImage(primaryAuthor.image).width(240).height(240).fit("crop").url() : null;
+  const personName = primaryAuthor?.name ?? defaultAuthorName;
+
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: personName,
+    description: primaryAuthor?.bio ?? "Yazar",
+    image: avatarUrl ?? undefined,
+    url: `${sitePublicUrl}/about`,
+  };
 
   return (
     <Container className="space-y-10">
+      <JsonLd data={personJsonLd} />
       <section className="space-y-3 text-center">
         <h1 className="text-3xl font-bold tracking-tight">Hakkında</h1>
         <p className="mx-auto max-w-measure text-sm leading-7 text-ink-muted">

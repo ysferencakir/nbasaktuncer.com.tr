@@ -10,7 +10,7 @@ const env = getSanityPublicEnv();
 
 export default defineConfig({
   name: "default",
-  title: "Makale Platformu Studio",
+  title: "N. Başak Tuncer Studio",
   projectId: env.projectId,
   dataset: env.dataset,
   apiVersion: env.apiVersion,

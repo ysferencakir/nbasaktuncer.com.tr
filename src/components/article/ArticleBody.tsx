@@ -7,7 +7,7 @@ type ArticleBodyProps = {
 
 export function ArticleBody({ article }: ArticleBodyProps) {
   return (
-    <section className="mx-auto w-full max-w-measure">
+    <section className="w-full max-w-measure">
       <PortableTextRenderer value={article.body} />
     </section>
   );

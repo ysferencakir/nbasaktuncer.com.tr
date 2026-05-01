@@ -70,6 +70,47 @@ const portableTextBlocks = defineField({
         }),
       ],
     }),
+    defineArrayMember({
+      name: "tipBox",
+      type: "object",
+      title: "Ipucu kutusu",
+      fields: [
+        defineField({
+          name: "title",
+          type: "string",
+          title: "Baslik",
+          initialValue: "Ipucu",
+          validation: (Rule) => Rule.required().min(2).max(80),
+        }),
+        defineField({
+          name: "text",
+          type: "text",
+          rows: 3,
+          title: "Icerik",
+          validation: (Rule) => Rule.required().min(10).max(500),
+        }),
+      ],
+    }),
+    defineArrayMember({
+      name: "quoteCard",
+      type: "object",
+      title: "Alinti karti",
+      fields: [
+        defineField({
+          name: "quote",
+          type: "text",
+          rows: 3,
+          title: "Alinti",
+          validation: (Rule) => Rule.required().min(10).max(500),
+        }),
+        defineField({
+          name: "source",
+          type: "string",
+          title: "Kaynak",
+          description: "Istege bagli: alintinin sahibi veya kaynak bilgisi.",
+        }),
+      ],
+    }),
   ],
   validation: (Rule) => Rule.required().min(1),
 });

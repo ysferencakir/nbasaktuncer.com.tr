@@ -4,8 +4,9 @@ import { notFound } from "next/navigation";
 
 import { ArticleBody } from "@/components/article/ArticleBody";
 import { RelatedArticles } from "@/components/article/RelatedArticles";
+import { TableOfContents } from "@/components/article/TableOfContents";
 import { Container } from "@/components/ui/Container";
-import { estimateReadingMinutes } from "@/lib/content-utils";
+import { estimateReadingMinutes, extractTocItems } from "@/lib/content-utils";
 import { fetchArticleBySlug, fetchRelatedArticles } from "@/lib/queries/articles";
 import { urlForImage } from "@/lib/sanity/image";
 
@@ -47,6 +48,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   );
   const coverUrl = article.coverImage ? urlForImage(article.coverImage).width(1400).height(788).fit("crop").url() : null;
   const readingMinutes = estimateReadingMinutes(`${article.title} ${article.excerpt}`);
+  const tocItems = extractTocItems(article.body as Array<{ _type: string; [key: string]: unknown }> | null | undefined);
 
   return (
     <Container className="space-y-8">
@@ -71,7 +73,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           />
         ) : null}
 
-        <ArticleBody article={article} />
+        <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+          <ArticleBody article={article} />
+          <div className="lg:sticky lg:top-24 lg:h-fit">
+            <TableOfContents items={tocItems} />
+          </div>
+        </div>
         <RelatedArticles articles={relatedArticles} />
       </article>
     </Container>

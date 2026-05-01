@@ -36,7 +36,7 @@ export type ArticleListItem = {
 
 export type ArticleDetail = ArticleListItem & {
   /** Portable Text blokları (başlık, paragraf, görsel, …) */
-  body?: PortableTextBlock[] | null;
+  body?: Array<PortableTextBlock | { _type: string; [key: string]: unknown }> | null;
   seoTitle?: string | null;
   seoDescription?: string | null;
   status?: "draft" | "published";

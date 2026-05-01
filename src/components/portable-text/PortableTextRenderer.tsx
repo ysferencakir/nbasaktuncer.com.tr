@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import type { PortableTextBlock } from "@portabletext/types";
 
+import { createSectionId } from "@/lib/content-utils";
 import { urlForImage } from "@/lib/sanity/image";
 
 type LinkMark = {
@@ -11,15 +12,15 @@ type LinkMark = {
 };
 
 type PortableTextRendererProps = {
-  value: PortableTextBlock[] | null | undefined;
+  value: Array<PortableTextBlock | { _type: string; [key: string]: unknown }> | null | undefined;
 };
 
 const components: PortableTextComponents = {
   block: {
-    h1: ({ children }) => <h1 className="mt-8 text-3xl font-bold tracking-tight">{children}</h1>,
-    h2: ({ children }) => <h2 className="mt-8 text-2xl font-semibold tracking-tight">{children}</h2>,
-    h3: ({ children }) => <h3 className="mt-6 text-xl font-semibold">{children}</h3>,
-    h4: ({ children }) => <h4 className="mt-6 text-lg font-semibold">{children}</h4>,
+    h1: ({ children, value }) => <h1 id={createSectionId(value._key)} className="mt-8 text-3xl font-bold tracking-tight">{children}</h1>,
+    h2: ({ children, value }) => <h2 id={createSectionId(value._key)} className="mt-8 text-2xl font-semibold tracking-tight">{children}</h2>,
+    h3: ({ children, value }) => <h3 id={createSectionId(value._key)} className="mt-6 text-xl font-semibold">{children}</h3>,
+    h4: ({ children, value }) => <h4 id={createSectionId(value._key)} className="mt-6 text-lg font-semibold">{children}</h4>,
     normal: ({ children }) => <p className="mt-4 leading-8 text-ink-muted">{children}</p>,
     blockquote: ({ children }) => (
       <blockquote className="mt-6 border-l-4 border-zinc-300 pl-4 italic text-ink-muted">{children}</blockquote>
@@ -57,6 +58,32 @@ const components: PortableTextComponents = {
         <figure className="my-8">
           <Image src={src} alt={alt} width={1200} height={675} className="h-auto w-full rounded-xl border border-zinc-200" />
           {caption ? <figcaption className="mt-2 text-sm text-ink-subtle">{caption}</figcaption> : null}
+        </figure>
+      );
+    },
+    tipBox: ({ value }) => {
+      const title = (value as { title?: string })?.title ?? "Ipucu";
+      const text = (value as { text?: string })?.text ?? "";
+
+      return (
+        <aside className="my-7 rounded-xl border border-[#e2d3c1] bg-[#fff7ed] p-4">
+          <p className="text-sm font-semibold text-ink">{title}</p>
+          {text ? <p className="mt-2 text-sm leading-7 text-ink-muted">{text}</p> : null}
+        </aside>
+      );
+    },
+    quoteCard: ({ value }) => {
+      const quote = (value as { quote?: string })?.quote ?? "";
+      const source = (value as { source?: string })?.source;
+
+      if (!quote) return null;
+
+      return (
+        <figure className="my-7 rounded-xl border border-[#e2d3c1] bg-surface-muted p-5">
+          <blockquote className="text-base italic leading-8 text-ink">
+            &ldquo;{quote}&rdquo;
+          </blockquote>
+          {source ? <figcaption className="mt-2 text-sm text-ink-subtle">— {source}</figcaption> : null}
         </figure>
       );
     },

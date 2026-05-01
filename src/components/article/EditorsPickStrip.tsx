@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { estimateReadingMinutes } from "@/lib/content-utils";
 import type { ArticleListItem } from "@/types/sanity";
 
 type EditorsPickStripProps = {
@@ -27,6 +28,17 @@ export function EditorsPickStrip({ articles }: EditorsPickStripProps) {
           >
             <p className="text-xs font-medium uppercase tracking-[0.12em] text-ink-subtle">Secki {index + 1}</p>
             <p className="mt-1 line-clamp-2 text-sm font-semibold leading-6 text-ink">{article.title}</p>
+            <div className="mt-2 flex items-center gap-2 text-xs text-ink-subtle">
+              <span>{new Intl.DateTimeFormat("tr-TR", { day: "2-digit", month: "short" }).format(new Date(article.publishedAt))}</span>
+              <span>·</span>
+              <span>{estimateReadingMinutes(`${article.title} ${article.excerpt}`)} dk</span>
+              {article.categories?.[0] ? (
+                <>
+                  <span>·</span>
+                  <span>{article.categories[0].title}</span>
+                </>
+              ) : null}
+            </div>
           </Link>
         ))}
       </div>

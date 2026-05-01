@@ -75,6 +75,25 @@ export const publishedArticlesByCategoryAndSearchQuery = `
   }
 `;
 
+export const relatedArticlesByCategoryQuery = `
+  *[
+    ${publishedFilter} &&
+    _id != $excludeId &&
+    count((categories[]->slug.current)[@ in $categorySlugs]) > 0
+  ] | order(publishedAt desc)[0...$limit] {
+    ${articleListProjection}
+  }
+`;
+
+export const latestArticlesExcludingCurrentQuery = `
+  *[
+    ${publishedFilter} &&
+    _id != $excludeId
+  ] | order(publishedAt desc)[0...$limit] {
+    ${articleListProjection}
+  }
+`;
+
 export async function fetchPublishedArticles(): Promise<ArticleListItem[]> {
   return getSanityClient().fetch<ArticleListItem[]>(publishedArticlesQuery);
 }
@@ -102,6 +121,22 @@ export async function fetchPublishedArticlesByCategoryAndSearch(
   return getSanityClient().fetch<ArticleListItem[]>(publishedArticlesByCategoryAndSearchQuery, {
     slug,
     searchPattern: `*${normalized}*`,
+  });
+}
+
+export async function fetchRelatedArticles(
+  excludeId: string,
+  categorySlugs: string[],
+  limit = 3,
+): Promise<ArticleListItem[]> {
+  if (categorySlugs.length === 0) {
+    return getSanityClient().fetch<ArticleListItem[]>(latestArticlesExcludingCurrentQuery, { excludeId, limit });
+  }
+
+  return getSanityClient().fetch<ArticleListItem[]>(relatedArticlesByCategoryQuery, {
+    excludeId,
+    categorySlugs,
+    limit,
   });
 }
 

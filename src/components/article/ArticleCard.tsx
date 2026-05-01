@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { estimateReadingMinutes } from "@/lib/content-utils";
 import { urlForImage } from "@/lib/sanity/image";
 import type { ArticleListItem } from "@/types/sanity";
 
@@ -14,6 +15,7 @@ function formatDate(value: string) {
 
 export function ArticleCard({ article }: ArticleCardProps) {
   const coverUrl = article.coverImage ? urlForImage(article.coverImage).width(800).height(450).fit("crop").url() : null;
+  const readingMinutes = estimateReadingMinutes(`${article.title} ${article.excerpt}`);
 
   return (
     <article className="overflow-hidden rounded-2xl border border-[#e7d8c6] bg-surface-card shadow-[0_2px_12px_rgba(66,42,20,0.05)]">
@@ -29,7 +31,9 @@ export function ArticleCard({ article }: ArticleCardProps) {
         </Link>
       ) : null}
       <div className="space-y-3 p-6">
-        <p className="text-xs font-medium text-ink-subtle">{formatDate(article.publishedAt)}</p>
+        <p className="text-xs font-medium text-ink-subtle">
+          {formatDate(article.publishedAt)} · {readingMinutes} dk
+        </p>
         <h2 className="text-xl font-semibold leading-tight">
           <Link href={`/articles/${article.slug}`} className="hover:text-accent">
             {article.title}

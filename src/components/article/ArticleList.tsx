@@ -5,9 +5,10 @@ type ArticleListProps = {
   title: string;
   description?: string;
   articles: ArticleListItem[];
+  emptyMessage?: string;
 };
 
-export function ArticleList({ title, description, articles }: ArticleListProps) {
+export function ArticleList({ title, description, articles, emptyMessage = "Henuz yayinlanmis makale bulunmuyor." }: ArticleListProps) {
   return (
     <section className="space-y-6">
       <div className="space-y-2 border-b border-[#e8dccf] pb-4">
@@ -17,7 +18,7 @@ export function ArticleList({ title, description, articles }: ArticleListProps) 
 
       {articles.length === 0 ? (
         <div className="rounded-xl border border-dashed border-[#dcc8b3] bg-surface-card p-8 text-center text-ink-muted">
-          Henüz yayınlanmış makale bulunmuyor.
+          {emptyMessage}
         </div>
       ) : (
         <div className="grid gap-6 md:grid-cols-2">

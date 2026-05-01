@@ -39,6 +39,11 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
             : "Yayinlanmis tum icerikler bu sayfada listelenir."
         }
         articles={listItems}
+        emptyMessage={
+          search
+            ? `Aramanizla eslesen icerik bulunamadi. Farkli bir anahtar kelime ile tekrar deneyin.`
+            : "Henuz yayinlanmis makale bulunmuyor."
+        }
       />
     </Container>
   );

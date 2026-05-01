@@ -52,6 +52,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             : "Bu kategoriye ait yayinlanmis icerikler listeleniyor."
         }
         articles={articles}
+        emptyMessage={
+          search
+            ? `Bu kategoride aramanizla eslesen icerik bulunamadi.`
+            : "Bu kategori icin yayinlanmis makale bulunmuyor."
+        }
       />
     </Container>
   );

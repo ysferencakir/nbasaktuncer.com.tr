@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { EditorsPickStrip } from "@/components/article/EditorsPickStrip";
 import { FeaturedArticle } from "@/components/article/FeaturedArticle";
 import { ArticleList } from "@/components/article/ArticleList";
 import { Container } from "@/components/ui/Container";
@@ -8,6 +9,7 @@ import { fetchPublishedArticles } from "@/lib/queries/articles";
 export default async function HomePage() {
   const allArticles = await fetchPublishedArticles();
   const featuredArticle = allArticles[0] ?? null;
+  const editorsPickArticles = featuredArticle ? allArticles.slice(1, 4) : allArticles.slice(0, 3);
   const latestArticles = featuredArticle ? allArticles.slice(1, 7) : allArticles.slice(0, 6);
 
   return (
@@ -32,6 +34,8 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      <EditorsPickStrip articles={editorsPickArticles} />
 
       <ArticleList
         title="Son Makaleler"

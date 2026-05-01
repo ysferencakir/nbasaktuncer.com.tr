@@ -38,6 +38,15 @@ export const publishedArticlesQuery = `
   }
 `;
 
+export const editorsPickArticlesQuery = `
+  *[
+    ${publishedFilter} &&
+    defined(featuredRank)
+  ] | order(featuredRank asc, publishedAt desc)[0...3] {
+    ${articleListProjection}
+  }
+`;
+
 export const publishedArticlesByCategoryQuery = `
   *[${publishedFilter} && $slug in categories[]->slug.current] | order(publishedAt desc) {
     ${articleListProjection}
@@ -106,6 +115,10 @@ export const articleNavigationItemsQuery = `
 
 export async function fetchPublishedArticles(): Promise<ArticleListItem[]> {
   return getSanityClient().fetch<ArticleListItem[]>(publishedArticlesQuery);
+}
+
+export async function fetchEditorsPickArticles(): Promise<ArticleListItem[]> {
+  return getSanityClient().fetch<ArticleListItem[]>(editorsPickArticlesQuery);
 }
 
 export async function fetchPublishedArticlesByCategory(slug: string): Promise<ArticleListItem[]> {

@@ -40,4 +40,5 @@ export type ArticleDetail = ArticleListItem & {
   seoTitle?: string | null;
   seoDescription?: string | null;
   status?: "draft" | "published";
+  featuredRank?: number | null;
 };

@@ -210,6 +210,14 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "featuredRank",
+      title: "Editör seçkisi sırası",
+      type: "number",
+      group: "meta",
+      description: "Ana sayfadaki Editör Seçkisi için isteğe bağlı sıra değeri (1 en yüksek).",
+      validation: (Rule) => Rule.min(1).max(20).integer(),
+    }),
+    defineField({
       name: "seoTitle",
       title: "SEO başlığı",
       type: "string",

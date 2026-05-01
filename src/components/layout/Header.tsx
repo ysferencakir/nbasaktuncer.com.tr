@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Container } from "@/components/ui/Container";
+import { isExternalUrl, studioPublicUrl } from "@/lib/site-config";
 
 const navItems = [
   { href: "/", label: "Ana Sayfa" },
@@ -9,8 +10,10 @@ const navItems = [
 ];
 
 export function Header() {
+  const studioIsExternal = isExternalUrl(studioPublicUrl);
+
   return (
-    <header className="border-b border-zinc-200 bg-white">
+    <header className="border-b border-[#e8dccf] bg-surface-card/80 backdrop-blur">
       <Container className="flex h-16 items-center justify-between">
         <Link href="/" className="text-base font-semibold tracking-tight text-ink hover:text-accent">
           Makale Platformu
@@ -21,7 +24,12 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Link href="/studio" className="rounded-md border border-zinc-300 px-3 py-1.5 font-medium text-ink hover:border-accent">
+          <Link
+            href={studioPublicUrl}
+            target={studioIsExternal ? "_blank" : undefined}
+            rel={studioIsExternal ? "noopener noreferrer" : undefined}
+            className="rounded-md border border-[#dcc8b3] bg-[#fff9f1] px-3 py-1.5 font-medium text-ink hover:border-accent"
+          >
             Studio
           </Link>
         </nav>

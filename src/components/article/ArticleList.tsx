@@ -10,13 +10,13 @@ type ArticleListProps = {
 export function ArticleList({ title, description, articles }: ArticleListProps) {
   return (
     <section className="space-y-6">
-      <div className="space-y-2">
+      <div className="space-y-2 border-b border-[#e8dccf] pb-4">
         <h1 className="text-3xl font-bold tracking-tight text-ink">{title}</h1>
         {description ? <p className="max-w-measure text-sm leading-7 text-ink-muted">{description}</p> : null}
       </div>
 
       {articles.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-zinc-300 bg-white p-8 text-center text-ink-muted">
+        <div className="rounded-xl border border-dashed border-[#dcc8b3] bg-surface-card p-8 text-center text-ink-muted">
           Henüz yayınlanmış makale bulunmuyor.
         </div>
       ) : (

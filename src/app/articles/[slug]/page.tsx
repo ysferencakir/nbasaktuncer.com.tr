@@ -43,11 +43,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <Container className="space-y-8">
       <article className="space-y-6">
-        <header className="space-y-3">
-          <p className="text-sm text-ink-subtle">{formatDate(article.publishedAt)}</p>
+        <header className="space-y-3 border-b border-[#e8dccf] pb-5">
+          <p className="text-sm font-medium text-ink-subtle">{formatDate(article.publishedAt)}</p>
           <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-ink">{article.title}</h1>
           <p className="max-w-measure text-sm leading-7 text-ink-muted">{article.excerpt}</p>
-          {article.author?.name ? <p className="text-sm text-ink-muted">Yazar: {article.author.name}</p> : null}
+          {article.author?.name ? <p className="text-sm text-ink-muted">{article.author.name}</p> : null}
         </header>
 
         {coverUrl ? (
@@ -56,7 +56,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             alt={article.coverImage?.alt ?? article.title}
             width={1400}
             height={788}
-            className="h-auto w-full rounded-2xl border border-zinc-200 object-cover"
+            className="h-auto w-full rounded-2xl border border-[#e7d8c6] object-cover"
             priority
           />
         ) : null}

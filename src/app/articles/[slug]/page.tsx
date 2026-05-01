@@ -3,12 +3,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ArticleBody } from "@/components/article/ArticleBody";
+import { ArticlePrevNextNav } from "@/components/article/ArticlePrevNextNav";
 import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
 import { RelatedArticles } from "@/components/article/RelatedArticles";
 import { TableOfContents } from "@/components/article/TableOfContents";
 import { Container } from "@/components/ui/Container";
 import { estimateReadingMinutes, extractTocItems } from "@/lib/content-utils";
-import { fetchArticleBySlug, fetchRelatedArticles } from "@/lib/queries/articles";
+import { fetchAdjacentArticlesBySlug, fetchArticleBySlug, fetchRelatedArticles } from "@/lib/queries/articles";
 import { urlForImage } from "@/lib/sanity/image";
 
 type ArticlePageProps = {
@@ -42,11 +43,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   if (!article) notFound();
 
-  const relatedArticles = await fetchRelatedArticles(
-    article._id,
-    article.categories?.map((category) => category.slug) ?? [],
-    3,
-  );
+  const [relatedArticles, adjacent] = await Promise.all([
+    fetchRelatedArticles(article._id, article.categories?.map((category) => category.slug) ?? [], 3),
+    fetchAdjacentArticlesBySlug(slug),
+  ]);
   const coverUrl = article.coverImage ? urlForImage(article.coverImage).width(1400).height(788).fit("crop").url() : null;
   const readingMinutes = estimateReadingMinutes(`${article.title} ${article.excerpt}`);
   const tocItems = extractTocItems(article.body as Array<{ _type: string; [key: string]: unknown }> | null | undefined);
@@ -81,6 +81,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             <TableOfContents items={tocItems} />
           </div>
         </div>
+        <ArticlePrevNextNav newer={adjacent.newer} older={adjacent.older} />
         <RelatedArticles articles={relatedArticles} />
       </article>
     </Container>

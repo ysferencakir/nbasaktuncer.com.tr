@@ -2,18 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { estimateReadingMinutes } from "@/lib/content-utils";
+import { HighlightText } from "@/components/ui/HighlightText";
 import { urlForImage } from "@/lib/sanity/image";
 import type { ArticleListItem } from "@/types/sanity";
 
 type ArticleCardProps = {
   article: ArticleListItem;
+  searchTerm?: string;
 };
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("tr-TR", { day: "2-digit", month: "long", year: "numeric" }).format(new Date(value));
 }
 
-export function ArticleCard({ article }: ArticleCardProps) {
+export function ArticleCard({ article, searchTerm }: ArticleCardProps) {
   const coverUrl = article.coverImage ? urlForImage(article.coverImage).width(800).height(450).fit("crop").url() : null;
   const readingMinutes = estimateReadingMinutes(`${article.title} ${article.excerpt}`);
 
@@ -36,10 +38,12 @@ export function ArticleCard({ article }: ArticleCardProps) {
         </p>
         <h2 className="text-xl font-semibold leading-tight">
           <Link href={`/articles/${article.slug}`} className="hover:text-accent">
-            {article.title}
+            <HighlightText text={article.title} query={searchTerm} />
           </Link>
         </h2>
-        <p className="line-clamp-3 text-sm leading-7 text-ink-muted">{article.excerpt}</p>
+        <p className="line-clamp-3 text-sm leading-7 text-ink-muted">
+          <HighlightText text={article.excerpt} query={searchTerm} />
+        </p>
         <div className="flex flex-wrap gap-2 text-xs text-ink-subtle">
           {article.categories?.map((category) => (
             <Link

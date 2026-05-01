@@ -52,6 +52,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
             : "Bu kategoriye ait yayınlanmış içerikler listeleniyor."
         }
         articles={articles}
+        searchTerm={search}
         emptyMessage={
           search
             ? "Bu kategoride aramanızla eşleşen içerik bulunamadı."

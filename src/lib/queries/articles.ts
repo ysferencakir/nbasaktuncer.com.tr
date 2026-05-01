@@ -94,6 +94,16 @@ export const latestArticlesExcludingCurrentQuery = `
   }
 `;
 
+export const articleNavigationItemsQuery = `
+  *[${publishedFilter}] | order(publishedAt desc) {
+    _id,
+    title,
+    "slug": slug.current,
+    excerpt,
+    publishedAt
+  }
+`;
+
 export async function fetchPublishedArticles(): Promise<ArticleListItem[]> {
   return getSanityClient().fetch<ArticleListItem[]>(publishedArticlesQuery);
 }
@@ -138,6 +148,22 @@ export async function fetchRelatedArticles(
     categorySlugs,
     limit,
   });
+}
+
+export async function fetchAdjacentArticlesBySlug(
+  slug: string,
+): Promise<{ newer: ArticleListItem | null; older: ArticleListItem | null }> {
+  const ordered = await getSanityClient().fetch<ArticleListItem[]>(articleNavigationItemsQuery);
+  const index = ordered.findIndex((item) => item.slug === slug);
+
+  if (index === -1) {
+    return { newer: null, older: null };
+  }
+
+  const newer = index > 0 ? ordered[index - 1] : null;
+  const older = index < ordered.length - 1 ? ordered[index + 1] : null;
+
+  return { newer, older };
 }
 
 export async function fetchArticleBySlug(slug: string): Promise<ArticleDetail | null> {

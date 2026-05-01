@@ -6,9 +6,16 @@ type ArticleListProps = {
   description?: string;
   articles: ArticleListItem[];
   emptyMessage?: string;
+  searchTerm?: string;
 };
 
-export function ArticleList({ title, description, articles, emptyMessage = "Henüz yayınlanmış makale bulunmuyor." }: ArticleListProps) {
+export function ArticleList({
+  title,
+  description,
+  articles,
+  emptyMessage = "Henüz yayınlanmış makale bulunmuyor.",
+  searchTerm,
+}: ArticleListProps) {
   return (
     <section className="space-y-6">
       <div className="space-y-2 border-b border-[#e8dccf] pb-4">
@@ -23,7 +30,7 @@ export function ArticleList({ title, description, articles, emptyMessage = "Hen�
       ) : (
         <div className="grid gap-6 md:grid-cols-2">
           {articles.map((article) => (
-            <ArticleCard key={article._id} article={article} />
+            <ArticleCard key={article._id} article={article} searchTerm={searchTerm} />
           ))}
         </div>
       )}

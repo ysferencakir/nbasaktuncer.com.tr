@@ -39,6 +39,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
             : "Yayınlanmış tüm içerikler bu sayfada listelenir."
         }
         articles={listItems}
+        searchTerm={search}
         emptyMessage={
           search
             ? "Aramanızla eşleşen içerik bulunamadı. Farklı bir anahtar kelime ile tekrar deneyin."

@@ -62,6 +62,19 @@ export const publishedArticlesBySearchQuery = `
   }
 `;
 
+export const publishedArticlesByCategoryAndSearchQuery = `
+  *[
+    ${publishedFilter} &&
+    $slug in categories[]->slug.current &&
+    (
+      title match $searchPattern ||
+      excerpt match $searchPattern
+    )
+  ] | order(publishedAt desc) {
+    ${articleListProjection}
+  }
+`;
+
 export async function fetchPublishedArticles(): Promise<ArticleListItem[]> {
   return getSanityClient().fetch<ArticleListItem[]>(publishedArticlesQuery);
 }
@@ -75,6 +88,19 @@ export async function fetchPublishedArticlesBySearch(search: string): Promise<Ar
   if (!normalized) return fetchPublishedArticles();
 
   return getSanityClient().fetch<ArticleListItem[]>(publishedArticlesBySearchQuery, {
+    searchPattern: `*${normalized}*`,
+  });
+}
+
+export async function fetchPublishedArticlesByCategoryAndSearch(
+  slug: string,
+  search: string,
+): Promise<ArticleListItem[]> {
+  const normalized = search.trim();
+  if (!normalized) return fetchPublishedArticlesByCategory(slug);
+
+  return getSanityClient().fetch<ArticleListItem[]>(publishedArticlesByCategoryAndSearchQuery, {
+    slug,
     searchPattern: `*${normalized}*`,
   });
 }

@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { ArticleList } from "@/components/article/ArticleList";
+import { ArticleSearchBar } from "@/components/article/ArticleSearchBar";
 import { Container } from "@/components/ui/Container";
-import { fetchPublishedArticlesByCategory } from "@/lib/queries/articles";
+import { fetchPublishedArticlesByCategoryAndSearch } from "@/lib/queries/articles";
 import { fetchCategoryBySlug } from "@/lib/queries/categories";
 
 type CategoryPageProps = {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ q?: string }>;
 };
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
@@ -27,17 +29,28 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   };
 }
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
+export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {
   const { slug } = await params;
-  const [category, articles] = await Promise.all([fetchCategoryBySlug(slug), fetchPublishedArticlesByCategory(slug)]);
+  const { q } = await searchParams;
+  const search = q?.trim() ?? "";
+
+  const [category, articles] = await Promise.all([
+    fetchCategoryBySlug(slug),
+    fetchPublishedArticlesByCategoryAndSearch(slug, search),
+  ]);
 
   if (!category) notFound();
 
   return (
-    <Container>
+    <Container className="space-y-8">
+      <ArticleSearchBar defaultValue={search} action={`/category/${slug}`} />
       <ArticleList
-        title={`${category.title} kategorisi`}
-        description="Bu kategoriye ait yayınlanmış içerikler listeleniyor."
+        title={search ? `${category.title} kategorisinde arama` : `${category.title} kategorisi`}
+        description={
+          search
+            ? "Arama sonucunda bu kategoride eslesen yayinlanmis icerikler listeleniyor."
+            : "Bu kategoriye ait yayinlanmis icerikler listeleniyor."
+        }
         articles={articles}
       />
     </Container>

@@ -1,12 +1,13 @@
 type ArticleSearchBarProps = {
   defaultValue?: string;
+  action?: string;
 };
 
-export function ArticleSearchBar({ defaultValue = "" }: ArticleSearchBarProps) {
+export function ArticleSearchBar({ defaultValue = "", action = "/articles" }: ArticleSearchBarProps) {
   return (
     <section className="space-y-3">
       <h2 className="text-sm font-semibold uppercase tracking-[0.14em] text-ink-subtle">Arama</h2>
-      <form action="/articles" method="get" className="flex flex-col gap-3 sm:flex-row">
+      <form action={action} method="get" className="flex flex-col gap-3 sm:flex-row">
         <input
           type="search"
           name="q"

@@ -19,7 +19,7 @@ export function ArticleList({
   return (
     <section className="space-y-6">
       <div className="space-y-2 border-b border-[#e8dccf] pb-4 dark:border-[#352b1f]">
-        <h1 className="text-3xl font-bold tracking-tight text-ink">{title}</h1>
+        <h1 className="font-serif text-3xl font-bold tracking-tight text-ink">{title}</h1>
         {description ? <p className="max-w-measure text-sm leading-7 text-ink-muted">{description}</p> : null}
       </div>
 

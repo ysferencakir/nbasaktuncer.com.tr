@@ -20,23 +20,25 @@ export function ArticleCard({ article, searchTerm }: ArticleCardProps) {
   const readingMinutes = estimateReadingMinutes(`${article.title} ${article.excerpt}`);
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-[#e7d8c6] bg-surface-card shadow-[0_2px_12px_rgba(66,42,20,0.05)] dark:border-[#352b1f] dark:shadow-none">
+    <article className="group overflow-hidden rounded-2xl border border-[#e7d8c6] bg-surface-card shadow-[0_2px_12px_rgba(66,42,20,0.05)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(66,42,20,0.10)] dark:border-[#352b1f] dark:shadow-none dark:hover:shadow-none">
       {coverUrl ? (
-        <Link href={`/articles/${article.slug}`} className="block">
+        <Link href={`/articles/${article.slug}`} className="block overflow-hidden">
           <Image
             src={coverUrl}
             alt={article.coverImage?.alt ?? article.title}
             width={800}
             height={450}
-            className="h-auto w-full object-cover"
+            className="h-auto w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
           />
         </Link>
-      ) : null}
+      ) : (
+        <div className="h-40 bg-gradient-to-br from-accent-soft to-surface-muted dark:from-[#3d2518] dark:to-[#1f1c15]" />
+      )}
       <div className="space-y-3 p-6">
         <p className="text-xs font-medium text-ink-subtle">
           {formatDate(article.publishedAt)} · {readingMinutes} dk
         </p>
-        <h2 className="text-xl font-semibold leading-tight">
+        <h2 className="font-serif text-xl font-semibold leading-tight">
           <Link href={`/articles/${article.slug}`} className="hover:text-accent">
             <HighlightText text={article.title} query={searchTerm} />
           </Link>

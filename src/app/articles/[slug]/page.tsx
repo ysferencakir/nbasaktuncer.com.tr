@@ -90,7 +90,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <p className="text-sm font-medium text-ink-subtle">
             {formatDate(article.publishedAt)} · {readingMinutes} dk okuma
           </p>
-          <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-ink">{article.title}</h1>
+          <h1 className="max-w-3xl font-serif text-4xl font-bold tracking-tight text-ink">{article.title}</h1>
           <p className="max-w-measure text-sm leading-7 text-ink-muted">{article.excerpt}</p>
           {article.author?.name ? <p className="text-sm text-ink-muted">{article.author.name}</p> : null}
         </header>

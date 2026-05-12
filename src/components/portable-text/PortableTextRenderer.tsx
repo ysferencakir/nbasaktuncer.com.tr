@@ -23,7 +23,7 @@ const components: PortableTextComponents = {
     h4: ({ children, value }) => <h4 id={createSectionId(value._key)} className="mt-6 text-lg font-semibold">{children}</h4>,
     normal: ({ children }) => <p className="mt-4 leading-8 text-ink-muted">{children}</p>,
     blockquote: ({ children }) => (
-      <blockquote className="mt-6 border-l-4 border-zinc-300 pl-4 italic text-ink-muted">{children}</blockquote>
+      <blockquote className="mt-6 border-l-4 border-zinc-300 pl-4 italic text-ink-muted dark:border-zinc-600">{children}</blockquote>
     ),
   },
   list: {
@@ -56,7 +56,7 @@ const components: PortableTextComponents = {
 
       return (
         <figure className="my-8">
-          <Image src={src} alt={alt} width={1200} height={675} className="h-auto w-full rounded-xl border border-zinc-200" />
+          <Image src={src} alt={alt} width={1200} height={675} className="h-auto w-full rounded-xl border border-zinc-200 dark:border-zinc-700" />
           {caption ? <figcaption className="mt-2 text-sm text-ink-subtle">{caption}</figcaption> : null}
         </figure>
       );
@@ -66,7 +66,7 @@ const components: PortableTextComponents = {
       const text = (value as { text?: string })?.text ?? "";
 
       return (
-        <aside className="my-7 rounded-xl border border-[#e2d3c1] bg-[#fff7ed] p-4">
+        <aside className="my-7 rounded-xl border border-[#e2d3c1] bg-[#fff7ed] p-4 dark:border-[#352b1f] dark:bg-[#251a0c]">
           <p className="text-sm font-semibold text-ink">{title}</p>
           {text ? <p className="mt-2 text-sm leading-7 text-ink-muted">{text}</p> : null}
         </aside>
@@ -79,7 +79,7 @@ const components: PortableTextComponents = {
       if (!quote) return null;
 
       return (
-        <figure className="my-7 rounded-xl border border-[#e2d3c1] bg-surface-muted p-5">
+        <figure className="my-7 rounded-xl border border-[#e2d3c1] bg-surface-muted p-5 dark:border-[#352b1f]">
           <blockquote className="text-base italic leading-8 text-ink">
             &ldquo;{quote}&rdquo;
           </blockquote>

@@ -20,7 +20,7 @@ export function ArticleCard({ article, searchTerm }: ArticleCardProps) {
   const readingMinutes = estimateReadingMinutes(`${article.title} ${article.excerpt}`);
 
   return (
-    <article className="overflow-hidden rounded-2xl border border-[#e7d8c6] bg-surface-card shadow-[0_2px_12px_rgba(66,42,20,0.05)]">
+    <article className="overflow-hidden rounded-2xl border border-[#e7d8c6] bg-surface-card shadow-[0_2px_12px_rgba(66,42,20,0.05)] dark:border-[#352b1f] dark:shadow-none">
       {coverUrl ? (
         <Link href={`/articles/${article.slug}`} className="block">
           <Image
@@ -49,7 +49,7 @@ export function ArticleCard({ article, searchTerm }: ArticleCardProps) {
             <Link
               key={category._id}
               href={`/category/${category.slug}`}
-              className="rounded-full border border-[#e2d3c1] bg-surface-muted px-2.5 py-1 hover:text-accent"
+              className="rounded-full border border-[#e2d3c1] bg-surface-muted px-2.5 py-1 hover:text-accent dark:border-[#352b1f]"
             >
               {category.title}
             </Link>

@@ -38,7 +38,7 @@ export default async function AboutPage() {
         </p>
       </section>
 
-      <section className="mx-auto w-full max-w-2xl rounded-2xl border border-[#e7d8c6] bg-surface-card p-8 text-center shadow-[0_2px_12px_rgba(66,42,20,0.05)]">
+      <section className="mx-auto w-full max-w-2xl rounded-2xl border border-[#e7d8c6] bg-surface-card p-8 text-center shadow-[0_2px_12px_rgba(66,42,20,0.05)] dark:border-[#352b1f] dark:shadow-none">
         <h2 className="text-lg font-semibold uppercase tracking-[0.16em] text-accent">Yazar</h2>
         {primaryAuthor ? (
           <div className="mt-5 space-y-4">
@@ -48,10 +48,10 @@ export default async function AboutPage() {
                 alt={primaryAuthor.image?.alt ?? primaryAuthor.name}
                 width={120}
                 height={120}
-                className="mx-auto h-28 w-28 rounded-full border border-[#dcc8b3] object-cover"
+                className="mx-auto h-28 w-28 rounded-full border border-[#dcc8b3] object-cover dark:border-[#352b1f]"
               />
             ) : (
-              <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full border border-[#dcc8b3] bg-surface-muted text-2xl font-semibold text-ink">
+              <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full border border-[#dcc8b3] bg-surface-muted text-2xl font-semibold text-ink dark:border-[#352b1f]">
                 {primaryAuthor.name.charAt(0)}
               </div>
             )}
@@ -63,7 +63,7 @@ export default async function AboutPage() {
           </div>
         ) : (
           <div className="mt-5 space-y-3">
-            <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full border border-[#dcc8b3] bg-surface-muted text-2xl font-semibold text-ink">
+            <div className="mx-auto flex h-28 w-28 items-center justify-center rounded-full border border-[#dcc8b3] bg-surface-muted text-2xl font-semibold text-ink dark:border-[#352b1f]">
               {defaultAuthorName.charAt(0)}
             </div>
             <p className="text-2xl font-semibold tracking-tight">{defaultAuthorName}</p>

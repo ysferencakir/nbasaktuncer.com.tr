@@ -6,6 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "media",
   theme: {
     extend: {
       fontFamily: {
@@ -14,19 +15,19 @@ const config: Config = {
       },
       colors: {
         surface: {
-          DEFAULT: "#fcfcfb",
-          muted: "#f7f4f0",
-          card: "#ffffff",
+          DEFAULT: "var(--color-surface)",
+          muted: "var(--color-surface-muted)",
+          card: "var(--color-surface-card)",
         },
         ink: {
-          DEFAULT: "#241f1a",
-          muted: "#4f463d",
-          subtle: "#8d8072",
+          DEFAULT: "var(--color-ink)",
+          muted: "var(--color-ink-muted)",
+          subtle: "var(--color-ink-subtle)",
         },
         accent: {
-          DEFAULT: "#8a4f28",
-          hover: "#744220",
-          soft: "#f1e2d2",
+          DEFAULT: "var(--color-accent)",
+          hover: "var(--color-accent-hover)",
+          soft: "var(--color-accent-soft)",
         },
       },
       maxWidth: {

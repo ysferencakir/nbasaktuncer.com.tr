@@ -3,8 +3,32 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
   scroll-behavior: smooth;
+
+  --color-surface: #fcfcfb;
+  --color-surface-muted: #f7f4f0;
+  --color-surface-card: #ffffff;
+  --color-ink: #241f1a;
+  --color-ink-muted: #4f463d;
+  --color-ink-subtle: #8d8072;
+  --color-accent: #8a4f28;
+  --color-accent-hover: #744220;
+  --color-accent-soft: #f1e2d2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface: #18150f;
+    --color-surface-muted: #1f1c15;
+    --color-surface-card: #231f17;
+    --color-ink: #ede8e2;
+    --color-ink-muted: #c2b8ad;
+    --color-ink-subtle: #7d7265;
+    --color-accent: #c47a47;
+    --color-accent-hover: #d4895a;
+    --color-accent-soft: #3d2518;
+  }
 }
 
 body {
@@ -18,4 +42,11 @@ a {
 ::selection {
   background: #ebd5be;
   color: #2a2118;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::selection {
+    background: #3d2518;
+    color: #ede8e2;
+  }
 }

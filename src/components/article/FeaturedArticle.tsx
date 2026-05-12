@@ -16,7 +16,7 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
   const coverUrl = article.coverImage ? urlForImage(article.coverImage).width(1400).height(788).fit("crop").url() : null;
 
   return (
-    <section className="overflow-hidden rounded-2xl border border-[#e7d8c6] bg-surface-card shadow-[0_4px_16px_rgba(66,42,20,0.06)]">
+    <section className="overflow-hidden rounded-2xl border border-[#e7d8c6] bg-surface-card shadow-[0_4px_16px_rgba(66,42,20,0.06)] dark:border-[#352b1f] dark:shadow-none">
       <div className="grid gap-0 md:grid-cols-[1.2fr_1fr]">
         {coverUrl ? (
           <Link href={`/articles/${article.slug}`} className="block">

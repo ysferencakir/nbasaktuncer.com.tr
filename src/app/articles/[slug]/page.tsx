@@ -86,7 +86,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <JsonLd data={articleJsonLd} />
       <JsonLd data={breadcrumbJsonLd} />
       <article className="space-y-6">
-        <header className="space-y-3 border-b border-[#e8dccf] pb-5">
+        <header className="space-y-3 border-b border-[#e8dccf] pb-5 dark:border-[#352b1f]">
           <p className="text-sm font-medium text-ink-subtle">
             {formatDate(article.publishedAt)} · {readingMinutes} dk okuma
           </p>
@@ -101,7 +101,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             alt={article.coverImage?.alt ?? article.title}
             width={1400}
             height={788}
-            className="h-auto w-full rounded-2xl border border-[#e7d8c6] object-cover"
+            className="h-auto w-full rounded-2xl border border-[#e7d8c6] object-cover dark:border-[#352b1f]"
             priority
           />
         ) : null}

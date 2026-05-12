@@ -20,7 +20,7 @@ export default async function HomePage() {
       {featuredArticle ? (
         <FeaturedArticle article={featuredArticle} />
       ) : (
-        <section className="rounded-2xl border border-[#e7d8c6] bg-surface-card p-8">
+        <section className="rounded-2xl border border-[#e7d8c6] bg-surface-card p-8 dark:border-[#352b1f]">
           <p className="text-sm font-medium text-accent">Sanity-First Kurulum</p>
           <h1 className="mt-2 text-4xl font-bold tracking-tight text-ink">İçeriği önce CMS üzerinde üret, sitede anında yayınla.</h1>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-ink-muted">

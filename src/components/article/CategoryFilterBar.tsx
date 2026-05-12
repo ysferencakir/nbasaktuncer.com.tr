@@ -20,7 +20,7 @@ export function CategoryFilterBar({ categories }: CategoryFilterBarProps) {
       <div className="flex flex-wrap gap-2">
         <Link
           href="/articles"
-          className="rounded-full border border-[#d8c1a8] bg-surface-card px-3 py-1.5 text-sm font-medium text-ink hover:text-accent"
+          className="rounded-full border border-[#d8c1a8] bg-surface-card px-3 py-1.5 text-sm font-medium text-ink hover:text-accent dark:border-[#352b1f]"
         >
           Tüm Yazılar
         </Link>
@@ -28,7 +28,7 @@ export function CategoryFilterBar({ categories }: CategoryFilterBarProps) {
           <Link
             key={category._id}
             href={`/category/${category.slug}`}
-            className="rounded-full border border-[#e2d3c1] bg-surface-muted px-3 py-1.5 text-sm text-ink-muted hover:text-accent"
+            className="rounded-full border border-[#e2d3c1] bg-surface-muted px-3 py-1.5 text-sm text-ink-muted hover:text-accent dark:border-[#352b1f]"
           >
             {category.title} ({category.articleCount})
           </Link>

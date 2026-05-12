@@ -13,7 +13,7 @@ export function ArticleSearchBar({ defaultValue = "", action = "/articles" }: Ar
           name="q"
           defaultValue={defaultValue}
           placeholder="Başlık veya özet içinde ara..."
-          className="w-full rounded-lg border border-[#dcc8b3] bg-surface-card px-3 py-2 text-sm text-ink outline-none ring-accent/30 transition focus:ring"
+          className="w-full rounded-lg border border-[#dcc8b3] bg-surface-card px-3 py-2 text-sm text-ink outline-none ring-accent/30 transition focus:ring dark:border-[#352b1f]"
         />
         <button
           type="submit"

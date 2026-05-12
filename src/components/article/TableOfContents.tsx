@@ -42,7 +42,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
   if (items.length === 0) return null;
 
   return (
-    <aside className="rounded-2xl border border-[#e7d8c6] bg-surface-card p-4">
+    <aside className="rounded-2xl border border-[#e7d8c6] bg-surface-card p-4 dark:border-[#352b1f]">
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-ink-subtle">İçindekiler</p>
       <nav className="mt-3">
         <ul className="space-y-2">

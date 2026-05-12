@@ -17,18 +17,16 @@
   --color-accent-soft: #f1e2d2;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-surface: #18150f;
-    --color-surface-muted: #1f1c15;
-    --color-surface-card: #231f17;
-    --color-ink: #ede8e2;
-    --color-ink-muted: #c2b8ad;
-    --color-ink-subtle: #7d7265;
-    --color-accent: #c47a47;
-    --color-accent-hover: #d4895a;
-    --color-accent-soft: #3d2518;
-  }
+.dark {
+  --color-surface: #18150f;
+  --color-surface-muted: #1f1c15;
+  --color-surface-card: #231f17;
+  --color-ink: #ede8e2;
+  --color-ink-muted: #c2b8ad;
+  --color-ink-subtle: #7d7265;
+  --color-accent: #c47a47;
+  --color-accent-hover: #d4895a;
+  --color-accent-soft: #3d2518;
 }
 
 body {
@@ -44,9 +42,7 @@ a {
   color: #2a2118;
 }
 
-@media (prefers-color-scheme: dark) {
-  ::selection {
-    background: #3d2518;
-    color: #ede8e2;
-  }
+.dark ::selection {
+  background: #3d2518;
+  color: #ede8e2;
 }

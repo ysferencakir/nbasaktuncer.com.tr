@@ -4,6 +4,7 @@ import logo from "../../../N.Başak Tuncer.svg";
 import logoDark from "../../../N.Başak Tuncer-white.svg";
 
 import { Container } from "@/components/ui/Container";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const navItems = [
   { href: "/", label: "Ana Sayfa" },
@@ -25,6 +26,7 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+          <ThemeToggle />
         </nav>
       </Container>
     </header>

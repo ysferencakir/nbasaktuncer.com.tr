@@ -32,7 +32,7 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
         ) : null}
 
         <div className="space-y-4 p-7">
-          <p className="text-xs font-medium uppercase tracking-[0.16em] text-accent">One Cikan Makale</p>
+          <p className="text-xs font-medium uppercase tracking-[0.16em] text-accent">Öne Çıkan Makale</p>
           <h1 className="text-3xl font-bold leading-tight tracking-tight text-ink md:text-4xl">
             <Link href={`/articles/${article.slug}`} className="hover:text-accent">
               {article.title}
@@ -46,7 +46,7 @@ export function FeaturedArticle({ article }: FeaturedArticleProps) {
               href={`/articles/${article.slug}`}
               className="inline-flex rounded-md bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent-hover"
             >
-              Yaziyi Oku
+              Yazıyı Oku
             </Link>
           </div>
         </div>
